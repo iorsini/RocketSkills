@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaBriefcase, FaUsers, FaRocket, FaChartLine, FaClock, FaStar, FaPlus, FaBrain } from 'react-icons/fa';
+import { FaBriefcase, FaUsers, FaRocket, FaChartLine, FaClock, FaRegStar, FaPlus, FaBrain } from 'react-icons/fa';
 
 export default function EmployerDashboard() {
   const [stats] = useState({
@@ -619,7 +619,7 @@ export default function EmployerDashboard() {
                   </button>
                 </Link>
                 <button className="btn-secondary w-full text-sm">
-                  <FaStar />
+                  <FaRegStar />
                   Avaliar Candidatos
                 </button>
               </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaBrain, FaTrophy, FaClock, FaCheckCircle } from 'react-icons/fa';
+import { FaArrowLeft, FaBrain, FaTrophy, FaClock, FaCheckCircle, FaRegStar} from 'react-icons/fa';
 
 export default function SkillGapRadar() {
   const [animateChart, setAnimateChart] = useState(false);
@@ -410,7 +410,7 @@ export default function SkillGapRadar() {
                       <td className="py-4 px-4">
                         <div className="flex gap-1">
                           {[...Array(5)].map((_, i) => (
-                            <FaStar
+                            <FaRegStar
                               key={i}
                               className="text-sm"
                               style={{ color: i < 3 ? '#C6A667' : '#D9D9D9' }}

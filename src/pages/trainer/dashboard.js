@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaGraduationCap, FaRocket, FaChartLine, FaTrophy, FaClock, FaStar, FaUsers, FaPlus } from 'react-icons/fa';
+import { FaGraduationCap, FaRocket, FaChartLine, FaTrophy, FaClock, FaRegStar, FaUsers, FaPlus } from 'react-icons/fa';
 
 export default function TrainerDashboard() {
   const [stats] = useState({
@@ -157,7 +157,7 @@ export default function TrainerDashboard() {
               }}
             >
               {stats.avgRating}
-              <FaStar className="text-xl" />
+              <FaRegStar className="text-xl" />
             </div>
             <div className="text-xs" style={{ color: '#1E3A8A' }}>
               Avaliação Média

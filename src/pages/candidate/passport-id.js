@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaArrowLeft, FaRegStar, FaCheckCircle } from 'react-icons/fa';
 
 export default function PassportID() {
   const [profile] = useState({
@@ -362,7 +362,7 @@ export default function PassportID() {
         <div className="mt-8 flex flex-wrap gap-4 justify-center">
           <Link href="/candidate/skills-completed">
             <button className="btn-primary">
-              <FaStar />
+              <FaRegStar />
               Ver Skills Completas
             </button>
           </Link>

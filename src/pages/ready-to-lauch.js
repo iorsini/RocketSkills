@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaRocket, FaTrophy, FaClock, FaStar, FaCheckCircle } from 'react-icons/fa';
+import { FaRocket, FaTrophy, FaClock, FaRegStar, FaCheckCircle } from 'react-icons/fa';
 import { Confetti } from '@/components/Confetti';
 
 export default function ReadyToLaunch() {
@@ -260,7 +260,7 @@ export default function ReadyToLaunch() {
                 boxShadow: '0 4px 12px rgba(59, 170, 120, 0.3)'
               }}
             >
-              <FaStar className="text-3xl text-white" />
+              <FaRegStar className="text-3xl text-white" />
             </div>
             <div 
               className="text-4xl font-extrabold mb-2"

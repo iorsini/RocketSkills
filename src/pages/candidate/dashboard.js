@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaRocket, FaStar, FaClock, FaTrophy, FaBriefcase, FaCheckCircle, FaFire } from 'react-icons/fa';
+import { FaRocket, FaRegStar, FaClock, FaTrophy, FaBriefcase, FaCheckCircle, FaFire } from 'react-icons/fa';
 
 export default function CandidateDashboard() {
   const [profile] = useState({
@@ -57,7 +57,7 @@ export default function CandidateDashboard() {
       type: 'match',
       title: 'Novo match: 87% com TechCorp',
       time: '5 horas atrás',
-      icon: FaStar,
+      icon: FaRegStar,
       color: '#C6A667'
     },
     {
@@ -288,7 +288,7 @@ export default function CandidateDashboard() {
               <div className="mt-6 text-center">
                 <Link href="/skill-gap">
                   <button className="btn-primary">
-                    <FaStar />
+                    <FaRegStar />
                     Descobrir Mais Vagas
                   </button>
                 </Link>
@@ -362,7 +362,7 @@ export default function CandidateDashboard() {
                     className="w-12 h-12 rounded-full flex items-center justify-center"
                     style={{ background: '#C6A667' }}
                   >
-                    <FaStar className="text-2xl text-white" />
+                    <FaRegStar className="text-2xl text-white" />
                   </div>
                   <div>
                     <div 

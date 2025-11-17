@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaRocket, FaTrophy, FaUsers, FaChartLine, FaGraduationCap, FaBriefcase, FaClock, FaStar } from 'react-icons/fa';
+import { FaArrowLeft, FaRocket, FaTrophy, FaUsers, FaChartLine, FaGraduationCap, FaBriefcase, FaClock, FaRegStar } from 'react-icons/fa';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function StatsImpactDashboard() {
@@ -68,7 +68,7 @@ export default function StatsImpactDashboard() {
       color: '#66A6FF'
     },
     {
-      icon: FaStar,
+      icon: FaRegStar,
       title: 'Satisfação dos Empregadores',
       value: '4.8/5',
       description: 'Baseado em 342 avaliações',
@@ -201,7 +201,7 @@ export default function StatsImpactDashboard() {
           </div>
 
           <div className="card-rocket text-center hover:scale-105 transition-transform">
-            <FaStar className="text-3xl mx-auto mb-2" style={{ color: '#C6A667' }} />
+            <FaRegStar className="text-3xl mx-auto mb-2" style={{ color: '#C6A667' }} />
             <div 
               className="text-3xl font-extrabold mb-1"
               style={{ 

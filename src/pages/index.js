@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaRocket, FaBriefcase, FaGraduationCap, FaStar } from 'react-icons/fa';
+import { FaRocket, FaBriefcase, FaGraduationCap, FaRegStar } from 'react-icons/fa';
 
 export default function Landing() {
   return (

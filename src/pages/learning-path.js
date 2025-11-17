@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaCheckCircle, FaLock, FaStar, FaRocket } from 'react-icons/fa';
+import { FaArrowLeft, FaCheckCircle, FaLock, FaRegStar, FaRocket } from 'react-icons/fa';
 
 export default function LearningPath() {
   const [planets] = useState([
@@ -362,7 +362,7 @@ className="text-2xl font-extrabold mb-4"
                   </div>
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <FaStar
+                      <FaRegStar
                         key={i}
                         style={{ 
                           color: i < selectedPlanet.difficulty ? '#C6A667' : '#D9D9D9',
