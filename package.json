@@ -1,6 +1,6 @@
 {
-  "name": "my-next-project",
-  "version": "0.1.0",
+  "name": "rocketskills",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -12,11 +12,12 @@
     "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "recharts": "^2.10.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@next/bundle-analyzer": "^15.5.4",
+    "@next/bundle-analyzer": "^16.0.3",
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",

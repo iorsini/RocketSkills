@@ -1,156 +1,295 @@
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { FaCalendarDay } from "react-icons/fa";
+import Link from 'next/link';
+import { FaRocket, FaBriefcase, FaGraduationCap, FaStar } from 'react-icons/fa';
 
-export default function Home() {
-  const [popup, setPopup] = useState(null);
-  const [visible, setVisible] = useState(false);
-  const [stats, setStats] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  // Carrega as estatísticas da API
-  useEffect(() => {
-    fetch('/api/stats')
-      .then(res => res.json())
-      .then(data => {
-        setStats(data);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Erro ao carregar stats:', err);
-        setLoading(false);
-      });
-  }, []);
-
-  const mostrarPopup = (mensagem) => {
-    setPopup(mensagem);
-    setVisible(true);
-    setTimeout(() => setVisible(false), 1800);
-    setTimeout(() => setPopup(null), 2000);
-  };
-
+export default function Landing() {
   return (
-    <div className="relative">
-      {/* Pop-up */}
-      {popup && (
-        <div
-          className={`fixed top-4 left-1/2 transform -translate-x-1/2 bg-[#9900FF] text-white px-6 py-3 rounded-lg shadow-lg z-50 transition-opacity duration-300 ${
-            visible ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          {popup}
+    <div className="space-bg min-h-screen">
+      {/* HERO SECTION */}
+      <section className="min-h-screen flex flex-col items-center justify-center px-6 relative">
+        {/* Rocket Animation */}
+        <div className="mb-8 relative animate-fade-in">
+          <div className="w-64 h-64 relative">
+            {/* Rocket SVG simplificado */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <FaRocket 
+                className="text-9xl pulse-glow" 
+                style={{ color: '#C6A667' }}
+              />
+            </div>
+            {/* Particle trail */}
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+              {[...Array(5)].map((_, i) => (
+                <div
+                  key={i}
+                  className="w-2 h-2 rounded-full mx-auto mb-1"
+                  style={{
+                    background: '#C6A667',
+                    opacity: 1 - (i * 0.2),
+                    animation: `fadeIn 2s infinite ${i * 0.2}s`
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      )}
 
-      {/* Card Perfil */}
-      <div className="p-6 rounded-2xl text-white">
-        <div className="flex gap-6 h-50">
-          {/* Foto de perfil + nome + data */}
-          <div className="w-1/2 flex flex-col items-center justify-center gap-2">
-            <img
-              src="perfil.png"
-              alt="Foto de perfil"
-              className="w-40 h-40 aspect-square rounded-full object-cover object-center"
-            />
-            <h2 className="text-xl font-semibold">Meu perfil</h2>
-            <p className="flex items-center text-sm text-gray-300 mt-1">
-              <FaCalendarDay className="mr-1" />
-              18/01/2024
+        {/* Title */}
+        <h1 
+          className="text-7xl md:text-8xl font-extrabold text-center mb-6 animate-fade-in"
+          style={{ 
+            color: '#C6A667',
+            textShadow: '0 0 30px rgba(198, 166, 103, 0.5)',
+            fontFamily: 'Montserrat, sans-serif'
+          }}
+        >
+          ROCKETSKILLS
+        </h1>
+
+        {/* Slogan */}
+        <p 
+          className="text-2xl md:text-3xl text-center mb-12 animate-slide-in-right"
+          style={{ color: '#F5EEDC' }}
+        >
+          Get Ready to Launch Your Career
+        </p>
+
+        {/* CTA Button */}
+        <Link href="/skill-gap">
+          <button className="btn-primary text-xl">
+            <FaRocket />
+            Discover Your Skill Gap
+          </button>
+        </Link>
+      </section>
+
+      {/* STATS SECTION */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Card 1 */}
+          <div 
+            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
+            style={{ animationDelay: '0.1s' }}
+          >
+            <div 
+              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #C63C3C 0%, #a12f2f 100%)',
+                boxShadow: '0 4px 12px rgba(198, 60, 60, 0.3)'
+              }}
+            >
+              <span className="text-3xl">📉</span>
+            </div>
+            <h3 
+              className="text-4xl font-extrabold mb-2"
+              style={{ 
+                color: '#C63C3C',
+                fontFamily: 'Montserrat, sans-serif'
+              }}
+            >
+              5.8%
+            </h3>
+            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
+              Taxa de desemprego
             </p>
           </div>
 
-          {/* Logo + botões */}
-          <div className="w-1/2 flex flex-col justify-center items-center gap-4">
-            <Image
-              src="/logo.png"
-              alt="Meu Logo"
-              width={100}
-              height={100}
-            />
-            <button
-              onClick={() => mostrarPopup("Perfil editado")}
-              className="w-3/4 px-4 py-2 rounded-full bg-gray-800 text-white text-sm hover:bg-gray-700 transition"
+          {/* Card 2 */}
+          <div 
+            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
+            style={{ animationDelay: '0.2s' }}
+          >
+            <div 
+              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #FF8C00 0%, #FF6347 100%)',
+                boxShadow: '0 4px 12px rgba(255, 140, 0, 0.3)'
+              }}
             >
-              Editar Perfil
-            </button>
-            <button
-              onClick={() => mostrarPopup("Perfil partilhado")}
-              className="w-3/4 px-4 py-2 rounded-full bg-gray-800 text-white text-sm hover:bg-gray-700 transition"
+              <span className="text-3xl">👨‍🎓</span>
+            </div>
+            <h3 
+              className="text-4xl font-extrabold mb-2"
+              style={{ 
+                color: '#FF8C00',
+                fontFamily: 'Montserrat, sans-serif'
+              }}
             >
-              Partilhar Perfil
-            </button>
+              18.1%
+            </h3>
+            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
+              Desemprego jovem
+            </p>
+          </div>
+
+          {/* Card 3 */}
+          <div 
+            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
+            style={{ animationDelay: '0.3s' }}
+          >
+            <div 
+              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, #66A6FF 0%, #1E3A8A 100%)',
+                boxShadow: '0 4px 12px rgba(102, 166, 255, 0.3)'
+              }}
+            >
+              <span className="text-3xl">📚</span>
+            </div>
+            <h3 
+              className="text-4xl font-extrabold mb-2"
+              style={{ 
+                color: '#66A6FF',
+                fontFamily: 'Montserrat, sans-serif'
+              }}
+            >
+              71%
+            </h3>
+            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
+              Precisam de requalificação
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ESTATÍSTICAS */}
-      <div className="pt-[40px] max-w-4xl mx-auto">
-        <div
-          className="bg-transparent rounded-lg shadow-md p-6 
-                        max-h-[calc(100vh-380px)] overflow-y-auto"
-        >
-          {loading ? (
-            <div className="text-white text-center py-8">
-              Carregando estatísticas...
+      {/* FEATURES SECTION */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 
+            className="text-5xl font-extrabold text-center mb-16"
+            style={{ 
+              color: '#C6A667',
+              fontFamily: 'Montserrat, sans-serif'
+            }}
+          >
+            Como Funciona
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Feature 1 - Empresas */}
+            <div className="text-center animate-fade-in">
+              <div 
+                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, #C6A667 0%, #a88a52 100%)',
+                  boxShadow: '0 6px 20px rgba(198, 166, 103, 0.4)'
+                }}
+              >
+                <FaBriefcase className="text-5xl text-white" />
+              </div>
+              <h3 
+                className="text-2xl font-bold mb-3"
+                style={{ 
+                  color: '#C6A667',
+                  fontFamily: 'Montserrat, sans-serif'
+                }}
+              >
+                Empresas
+              </h3>
+              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
+                Publique vagas e receba candidatos qualificados com score de compatibilidade
+              </p>
             </div>
-          ) : stats ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.totalMusicas}
-                </div>
-                <div className="text-white">Total de reproduções</div>
+
+            {/* Feature 2 - Candidatos */}
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div 
+                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, #66A6FF 0%, #1E3A8A 100%)',
+                  boxShadow: '0 6px 20px rgba(102, 166, 255, 0.4)'
+                }}
+              >
+                <FaRocket className="text-5xl text-white" />
               </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.primeiraMusica}
-                </div>
-                <div className="text-white">Primeira música no histórico</div>
-              </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.artistaMaisOuvido}
-                </div>
-                <div className="text-white">Artista mais ouvido</div>
-              </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.musicasDiferentes}
-                </div>
-                <div className="text-white">Músicas diferentes</div>
-              </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.minutosOuvidos}
-                </div>
-                <div className="text-white">Minutos ouvidos</div>
-              </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.mediaTempoDiario}
-                </div>
-                <div className="text-white">Média tempo diário</div>
-              </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.horaMaisOuvida}
-                </div>
-                <div className="text-white">Hora do dia que mais ouve</div>
-              </div>
-              <div className="p-4">
-                <div className="text-lg font-semibold text-white truncate">
-                  {stats.estacaoMaisOuvida}
-                </div>
-                <div className="text-white">Estação do ano que mais ouve</div>
-              </div>
+              <h3 
+                className="text-2xl font-bold mb-3"
+                style={{ 
+                  color: '#66A6FF',
+                  fontFamily: 'Montserrat, sans-serif'
+                }}
+              >
+                Candidatos
+              </h3>
+              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
+                Identifique seus gaps de skills e receba trilhas personalizadas de aprendizado
+              </p>
             </div>
-          ) : (
-            <div className="text-white text-center py-8">
-              Erro ao carregar dados
+
+            {/* Feature 3 - Formadores */}
+            <div className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <div 
+                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(135deg, #3BAA78 0%, #2d8a60 100%)',
+                  boxShadow: '0 6px 20px rgba(59, 170, 120, 0.4)'
+                }}
+              >
+                <FaGraduationCap className="text-5xl text-white" />
+              </div>
+              <h3 
+                className="text-2xl font-bold mb-3"
+                style={{ 
+                  color: '#3BAA78',
+                  fontFamily: 'Montserrat, sans-serif'
+                }}
+              >
+                Formadores
+              </h3>
+              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
+                Crie micro-cursos sob demanda baseados em necessidades reais do mercado
+              </p>
             </div>
-          )}
+          </div>
+
+          {/* Access Buttons */}
+          <div className="mt-20 flex flex-wrap justify-center gap-6">
+            <Link href="/employer/dashboard">
+              <button className="btn-primary">
+                <FaBriefcase />
+                Acesso Empresas
+              </button>
+            </Link>
+            <Link href="/candidate/dashboard">
+              <button className="btn-primary">
+                <FaRocket />
+                Acesso Candidatos
+              </button>
+            </Link>
+            <Link href="/trainer/dashboard">
+              <button className="btn-primary">
+                <FaGraduationCap />
+                Acesso Formadores
+              </button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer 
+        className="py-12 px-6 text-center"
+        style={{ 
+          background: '#1E3A8A',
+          borderTop: '2px solid #C6A667'
+        }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-8 mb-6">
+            <Link href="/about" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
+              Sobre
+            </Link>
+            <Link href="/contact" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
+              Contato
+            </Link>
+            <Link href="/privacy" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
+              Privacidade
+            </Link>
+          </div>
+          <p style={{ color: '#D9D9D9', fontSize: '14px' }}>
+            © 2025 RocketSkills. Todos os direitos reservados.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
