@@ -1,37 +1,37 @@
 export const designSystem = {
   colors: {
     background: {
-      base: '#010718',
-      layer: '#050f2b',
-      panel: '#0b1f3f',
-      elevated: '#142d63',
-      highlight: '#1f3d80'
+      sand: '#FFF3B0',
+      cream: '#FFF9E7',
+      linen: '#FFEBC1',
+      card: '#FFFFFF',
+      tealMist: '#E4EFEF'
     },
     accent: {
-      primary: '#5C8DFF',
-      secondary: '#8A7BFF',
-      cyan: '#2AE9FF',
-      mint: '#55F8C0',
-      amber: '#F8C756'
+      crimson: '#9E2A2B',
+      saffron: '#E09F3E',
+      teal: '#335C67',
+      port: '#8C4A3F',
+      sky: '#A6D8D4'
     },
     text: {
-      primary: '#ECF2FF',
-      secondary: '#94A8D8',
-      muted: '#5C6C8F'
+      primary: '#1F2A2C',
+      secondary: '#3B4B55',
+      muted: '#5C6F73'
     },
     status: {
-      success: '#34D399',
-      warning: '#FDE68A',
-      info: '#38BDF8',
-      alert: '#FB7185'
+      success: '#3E9E6C',
+      warning: '#E09F3E',
+      info: '#335C67',
+      alert: '#C25252'
     },
-    borders: 'rgba(255, 255, 255, 0.08)',
-    glass: 'rgba(255, 255, 255, 0.04)'
+    borders: 'rgba(51, 92, 103, 0.18)',
+    paper: 'rgba(255, 243, 176, 0.65)'
   },
   typography: {
-    headings: 'Space Grotesk, Montserrat, sans-serif',
-    body: 'Inter, "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
-    monospace: 'IBM Plex Mono, SFMono-Regular, Menlo, monospace'
+    headings: '"Playfair Display", "DM Serif Display", Georgia, serif',
+    body: '"Poppins", "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, sans-serif',
+    monospace: '"Space Mono", "IBM Plex Mono", monospace'
   },
   spacing: {
     xs: 4,
@@ -42,37 +42,38 @@ export const designSystem = {
     xxl: 48
   },
   radii: {
-    sm: '10px',
-    md: '16px',
-    lg: '22px',
-    xl: '28px'
+    badge: '999px',
+    sm: '12px',
+    md: '18px',
+    lg: '26px',
+    xl: '34px'
   },
   iconography: {
     baseSize: 20,
     badgeSize: 48,
-    halo: 'drop-shadow(0 0 18px rgba(90, 200, 255, 0.35))'
+    halo: 'drop-shadow(0 8px 18px rgba(51, 92, 103, 0.25))'
   },
   components: {
     card: {
-      background: 'linear-gradient(135deg, rgba(17, 34, 74, 0.9), rgba(8, 16, 35, 0.85))',
-      border: '1px solid rgba(255, 255, 255, 0.08)',
-      radius: '22px'
+      background: 'linear-gradient(135deg, rgba(255, 247, 218, 0.95), rgba(255, 233, 193, 0.9))',
+      border: '1px solid rgba(51, 92, 103, 0.12)',
+      radius: '26px'
     },
     buttonPrimary: {
-      background: 'linear-gradient(120deg, #2AE9FF, #5C8DFF)',
-      color: '#010718',
-      radius: '12px'
+      background: 'linear-gradient(120deg, #9E2A2B, #E09F3E)',
+      color: '#FFF9E7',
+      radius: '14px'
     },
     buttonSecondary: {
-      background: 'transparent',
-      border: '1px solid rgba(42, 233, 255, 0.5)',
-      color: '#D6E3FF',
-      radius: '12px'
+      background: '#FFFFFF',
+      border: '1px dashed rgba(51, 92, 103, 0.4)',
+      color: '#335C67',
+      radius: '14px'
     },
     badge: {
-      background: 'rgba(90, 200, 255, 0.15)',
-      color: '#8AFFFF',
-      border: '1px solid rgba(90, 200, 255, 0.35)'
+      background: 'rgba(51, 92, 103, 0.08)',
+      color: '#335C67',
+      border: '1px solid rgba(51, 92, 103, 0.15)'
     }
   }
 };
