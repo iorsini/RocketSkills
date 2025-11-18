@@ -1,295 +1,420 @@
 import Link from 'next/link';
-import { FaRocket, FaBriefcase, FaGraduationCap, FaRegStar } from 'react-icons/fa';
+import {
+  FaRocket,
+  FaBriefcase,
+  FaGraduationCap,
+  FaRegStar,
+  FaGamepad,
+  FaChartLine,
+  FaUsers,
+  FaCompass,
+  FaMagic,
+  FaLayerGroup,
+  FaShieldAlt,
+  FaTrophy,
+  FaFlagCheckered,
+  FaSatellite,
+  FaGlobeAmericas,
+  FaFingerprint
+} from 'react-icons/fa';
+import { designSystem } from '@/utils/designSystem';
+
+const missionStats = [
+  {
+    title: 'Energia do Match',
+    value: '82%',
+    detail: 'baseado em 12k missões',
+    icon: FaChartLine,
+    accent: 'var(--stellar-blue)'
+  },
+  {
+    title: 'Missões Ativas',
+    value: '154',
+    detail: 'squads sincronizados agora',
+    icon: FaGamepad,
+    accent: 'var(--stellar-indigo)'
+  },
+  {
+    title: 'Contratações Orbitais',
+    value: '487',
+    detail: 'empregadores em fluxo',
+    icon: FaBriefcase,
+    accent: 'var(--stellar-glow)'
+  }
+];
+
+const personaTracks = [
+  {
+    label: 'Candidatos',
+    description: 'Passaporte espacial com carimbos visuais, mentorias e energia de aprendizagem.',
+    icon: FaRocket,
+    accent: 'var(--stellar-glow)',
+    href: '/candidate/dashboard'
+  },
+  {
+    label: 'Empresas',
+    description: 'Painel de controle para squads prontos, telemetria e ajuste de requisitos.',
+    icon: FaBriefcase,
+    accent: 'var(--stellar-blue)',
+    href: '/employer/dashboard'
+  },
+  {
+    label: 'Formadores',
+    description: 'Construa micro missões, monetize expertise e monitore impacto em tempo real.',
+    icon: FaGraduationCap,
+    accent: 'var(--stellar-indigo)',
+    href: '/trainer/dashboard'
+  }
+];
+
+const badgeBelt = [
+  {
+    title: 'Ready to Launch',
+    subtitle: 'score acima de 70%',
+    icon: FaFlagCheckered,
+    accent: 'var(--stellar-glow)'
+  },
+  {
+    title: 'Mentor Radar',
+    subtitle: 'feedback aplicado em 3 ciclos',
+    icon: FaMagic,
+    accent: 'var(--stellar-indigo)'
+  },
+  {
+    title: 'Squad Hero',
+    subtitle: 'match perfeito com equipe',
+    icon: FaShieldAlt,
+    accent: 'var(--stellar-blue)'
+  },
+  {
+    title: 'Galaxy Builder',
+    subtitle: 'empresa cria jornada completa',
+    icon: FaLayerGroup,
+    accent: 'var(--stellar-mint)'
+  }
+];
+
+const passportStamps = [
+  { label: 'React Nebula', description: 'patterns avançados', progress: 86 },
+  { label: 'API Hyperdrive', description: 'integrações seguras', progress: 74 },
+  { label: 'People Ops Orbit', description: 'soft skills aplicadas', progress: 63 },
+  { label: 'DevOps Pulse', description: 'observabilidade e SRE', progress: 58 }
+];
+
+const designTokensShowcase = [
+  { title: 'Cores', items: Object.values(designSystem.colors.accent) },
+  { title: 'Tipografia', items: [designSystem.typography.headings, designSystem.typography.body] },
+  { title: 'Espaçamento', items: Object.values(designSystem.spacing).map(v => `${v}px`) },
+  { title: 'Rádius', items: Object.values(designSystem.radii) }
+];
 
 export default function Landing() {
   return (
-    <div className="space-bg min-h-screen">
-      {/* HERO SECTION */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 relative">
-        {/* Rocket Animation */}
-        <div className="mb-8 relative animate-fade-in">
-          <div className="w-64 h-64 relative">
-            {/* Rocket SVG simplificado */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <FaRocket 
-                className="text-9xl pulse-glow" 
-                style={{ color: '#C6A667' }}
-              />
+    <div className="space-bg min-h-screen text-white">
+      <main className="app-shell">
+        <div className="stellar-container space-y-24">
+          {/* HERO */}
+          <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-center">
+            <div className="space-y-8">
+              <div className="badge-chip">Temporada Orbital 02 • UI/UX Futurista</div>
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                Painel intergaláctico para acelerar talentos, empresas e mentores.
+              </h1>
+              <p className="text-lg text-slate-200 max-w-2xl">
+                RocketSkills conecta empregadores, candidatos e formadores em um fluxo espacial.
+                Cada competência vira um carimbo no passaporte intergaláctico com energia, constelações e telemetria viva.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/skill-gap-radar">
+                  <button className="btn-primary text-lg">
+                    <FaRocket />
+                    Ativar Mission Control
+                  </button>
+                </Link>
+                <Link href="/stats">
+                  <button className="btn-secondary text-lg">
+                    <FaChartLine />
+                    Ver impacto real
+                  </button>
+                </Link>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-4">
+                {missionStats.map(card => (
+                  <div key={card.title} className="stat-card">
+                    <div className="flex items-center justify-between mb-4">
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{card.title}</p>
+                      <div className="glow-ring" style={{ borderColor: card.accent, color: card.accent }}>
+                        <card.icon />
+                      </div>
+                    </div>
+                    <div className="text-3xl font-extrabold" style={{ color: card.accent }}>{card.value}</div>
+                    <span className="text-xs text-slate-400">{card.detail}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            {/* Particle trail */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-2 h-2 rounded-full mx-auto mb-1"
-                  style={{
-                    background: '#C6A667',
-                    opacity: 1 - (i * 0.2),
-                    animation: `fadeIn 2s infinite ${i * 0.2}s`
-                  }}
-                />
+
+            <div className="mission-panel">
+              <div className="mission-header">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Mission Control</p>
+                  <h2 className="text-2xl font-bold mt-1">Pronto para a decolagem</h2>
+                </div>
+                <div className="glow-ring">
+                  <FaSatellite />
+                </div>
+              </div>
+              <div className="mission-body space-y-4">
+                {[
+                  {
+                    title: 'Scan de Skills',
+                    description: 'Radar com IA identifica lacunas e energia disponível',
+                    icon: FaCompass
+                  },
+                  {
+                    title: 'Quests Personalizadas',
+                    description: 'Micro desafios liberados semanalmente com feedback vivo',
+                    icon: FaGamepad
+                  },
+                  {
+                    title: 'Match & Patentes',
+                    description: 'Badges desbloqueiam recomendações e squads prontos',
+                    icon: FaTrophy
+                  }
+                ].map(step => (
+                  <div key={step.title} className="mission-step">
+                    <div className="step-icon">
+                      <step.icon />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white">{step.title}</p>
+                      <p className="text-xs text-slate-300">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mission-footer grid grid-cols-3 gap-4 text-center">
+                {[
+                  { label: 'Streak coletiva', value: '12 dias' },
+                  { label: 'Boost Mentoria', value: '+37%' },
+                  { label: 'Squads ativos', value: '58' }
+                ].map(item => (
+                  <div key={item.label}>
+                    <p className="text-xs uppercase text-slate-400">{item.label}</p>
+                    <p className="text-2xl font-bold">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* BADGES */}
+          <section className="space-y-8">
+            <div className="section-heading">
+              <div>
+                <p className="section-tag">Constelação de conquistas</p>
+                <h2 className="section-title">Carimbos do passaporte</h2>
+              </div>
+              <p className="section-description">
+                Cada badge representa energia acumulada nas trilhas e desbloqueia experiências personalizadas para candidatos, empresas e mentores.
+              </p>
+            </div>
+            <div className="badge-grid">
+              {badgeBelt.map(badge => (
+                <div key={badge.title} className="badge-card">
+                  <div className="badge-icon" style={{ background: badge.accent }}>
+                    <badge.icon />
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold">{badge.title}</p>
+                    <p className="text-sm text-slate-300">{badge.subtitle}</p>
+                  </div>
+                </div>
               ))}
             </div>
-          </div>
-        </div>
+          </section>
 
-        {/* Title */}
-        <h1 
-          className="text-7xl md:text-8xl font-extrabold text-center mb-6 animate-fade-in"
-          style={{ 
-            color: '#C6A667',
-            textShadow: '0 0 30px rgba(198, 166, 103, 0.5)',
-            fontFamily: 'Montserrat, sans-serif'
-          }}
-        >
-          ROCKETSKILLS
-        </h1>
-
-        {/* Slogan */}
-        <p 
-          className="text-2xl md:text-3xl text-center mb-12 animate-slide-in-right"
-          style={{ color: '#F5EEDC' }}
-        >
-          Get Ready to Launch Your Career
-        </p>
-
-        {/* CTA Button */}
-        <Link href="/skill-gap">
-          <button className="btn-primary text-xl">
-            <FaRocket />
-            Discover Your Skill Gap
-          </button>
-        </Link>
-      </section>
-
-      {/* STATS SECTION */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <div 
-            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
-            style={{ animationDelay: '0.1s' }}
-          >
-            <div 
-              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #C63C3C 0%, #a12f2f 100%)',
-                boxShadow: '0 4px 12px rgba(198, 60, 60, 0.3)'
-              }}
-            >
-              <span className="text-3xl">📉</span>
-            </div>
-            <h3 
-              className="text-4xl font-extrabold mb-2"
-              style={{ 
-                color: '#C63C3C',
-                fontFamily: 'Montserrat, sans-serif'
-              }}
-            >
-              5.8%
-            </h3>
-            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
-              Taxa de desemprego
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div 
-            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
-            style={{ animationDelay: '0.2s' }}
-          >
-            <div 
-              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #FF8C00 0%, #FF6347 100%)',
-                boxShadow: '0 4px 12px rgba(255, 140, 0, 0.3)'
-              }}
-            >
-              <span className="text-3xl">👨‍🎓</span>
-            </div>
-            <h3 
-              className="text-4xl font-extrabold mb-2"
-              style={{ 
-                color: '#FF8C00',
-                fontFamily: 'Montserrat, sans-serif'
-              }}
-            >
-              18.1%
-            </h3>
-            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
-              Desemprego jovem
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div 
-            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
-            style={{ animationDelay: '0.3s' }}
-          >
-            <div 
-              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #66A6FF 0%, #1E3A8A 100%)',
-                boxShadow: '0 4px 12px rgba(102, 166, 255, 0.3)'
-              }}
-            >
-              <span className="text-3xl">📚</span>
-            </div>
-            <h3 
-              className="text-4xl font-extrabold mb-2"
-              style={{ 
-                color: '#66A6FF',
-                fontFamily: 'Montserrat, sans-serif'
-              }}
-            >
-              71%
-            </h3>
-            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
-              Precisam de requalificação
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURES SECTION */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 
-            className="text-5xl font-extrabold text-center mb-16"
-            style={{ 
-              color: '#C6A667',
-              fontFamily: 'Montserrat, sans-serif'
-            }}
-          >
-            Como Funciona
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Feature 1 - Empresas */}
-            <div className="text-center animate-fade-in">
-              <div 
-                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #C6A667 0%, #a88a52 100%)',
-                  boxShadow: '0 6px 20px rgba(198, 166, 103, 0.4)'
-                }}
-              >
-                <FaBriefcase className="text-5xl text-white" />
+          {/* PERSONAS */}
+          <section className="space-y-10">
+            <div className="section-heading">
+              <div>
+                <p className="section-tag">Experiência UI/UX</p>
+                <h2 className="section-title">Escolha sua missão</h2>
               </div>
-              <h3 
-                className="text-2xl font-bold mb-3"
-                style={{ 
-                  color: '#C6A667',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                Empresas
-              </h3>
-              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
-                Publique vagas e receba candidatos qualificados com score de compatibilidade
+              <p className="section-description">
+                Microinterações, barras de energia e constelações minimalistas guiam cada astronauta durante onboarding, quests e contratações.
               </p>
             </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {personaTracks.map(track => (
+                <div key={track.label} className="persona-card" style={{ borderColor: track.accent }}>
+                  <div className="persona-icon" style={{ color: track.accent }}>
+                    <track.icon />
+                  </div>
+                  <h3 className="text-2xl font-bold">{track.label}</h3>
+                  <p className="text-sm text-slate-300 flex-1">{track.description}</p>
+                  <Link href={track.href} className="persona-link">
+                    Entrar no hub
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
 
-            {/* Feature 2 - Candidatos */}
-            <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div 
-                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #66A6FF 0%, #1E3A8A 100%)',
-                  boxShadow: '0 6px 20px rgba(102, 166, 255, 0.4)'
-                }}
-              >
-                <FaRocket className="text-5xl text-white" />
+          {/* PASSPORT */}
+          <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
+            <div className="holo-card space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="glow-ring text-xl">
+                  <FaGlobeAmericas />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Intergalactic Skill Passport</p>
+                  <h3 className="text-3xl font-bold">Mapa dos carimbos</h3>
+                </div>
               </div>
-              <h3 
-                className="text-2xl font-bold mb-3"
-                style={{ 
-                  color: '#66A6FF',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                Candidatos
-              </h3>
-              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
-                Identifique seus gaps de skills e receba trilhas personalizadas de aprendizado
-              </p>
+              <div className="space-y-4">
+                {passportStamps.map(stamp => (
+                  <div key={stamp.label} className="micro-card">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <p className="font-semibold">{stamp.label}</p>
+                        <p className="text-xs text-slate-400">{stamp.description}</p>
+                      </div>
+                      <span className="text-sm text-slate-300">{stamp.progress}%</span>
+                    </div>
+                    <div className="energy-bar">
+                      <span style={{ width: `${stamp.progress}%` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Feature 3 - Formadores */}
-            <div className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <div 
-                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #3BAA78 0%, #2d8a60 100%)',
-                  boxShadow: '0 6px 20px rgba(59, 170, 120, 0.4)'
-                }}
-              >
-                <FaGraduationCap className="text-5xl text-white" />
+            <div className="passport-cover p-8 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4), transparent 45%)' }} />
+              <div className="relative z-10 flex flex-col items-center gap-6">
+                <p className="text-xs uppercase tracking-[0.4em] text-slate-300">ROCKETSKILLS • SPACE AGENCY</p>
+                <div className="passport-emblem flex items-center justify-center">
+                  <FaRocket className="text-6xl text-cyan-300" />
+                </div>
+                <p className="font-bold text-lg tracking-[0.3em]">PASSAPORTE DE MISSÕES</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {[FaFingerprint, FaRegStar, FaShieldAlt].map((Icon, index) => (
+                    <div key={index} className="skill-badge completed">
+                      <Icon />
+                      <span>{['Identidade', 'Match', 'Segurança'][index]}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-400 tracking-[0.3em]">SERIAL RS-{new Date().getFullYear()}-{Math.floor(Math.random() * 9000 + 1000)}</p>
               </div>
-              <h3 
-                className="text-2xl font-bold mb-3"
-                style={{ 
-                  color: '#3BAA78',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                Formadores
-              </h3>
-              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
-                Crie micro-cursos sob demanda baseados em necessidades reais do mercado
+            </div>
+          </section>
+
+          {/* JOURNEY */}
+          <section className="space-y-8">
+            <div className="section-heading">
+              <div>
+                <p className="section-tag">Telemetria de progresso</p>
+                <h2 className="section-title">Fluxo do astronauta</h2>
+              </div>
+              <Link href="/learning-path" className="section-link">
+                Ver trilhas completas
+              </Link>
+            </div>
+            <div className="timeline">
+              {[
+                {
+                  title: 'Onboarding Imersivo',
+                  description: 'Score instantâneo, narrativa guiada e primeiros carimbos.',
+                  icon: FaUsers,
+                  highlight: 'Duração média: 9 minutos'
+                },
+                {
+                  title: 'Ciclos de Experimento',
+                  description: 'Quests com pair programming, live reviews e barras de energia.',
+                  icon: FaMagic,
+                  highlight: 'Taxa de conclusão: 92%'
+                },
+                {
+                  title: 'Match & Deployment',
+                  description: 'Recomendações acionáveis, contratos e métricas de impacto.',
+                  icon: FaFlagCheckered,
+                  highlight: 'Contratações em 21 dias'
+                }
+              ].map(step => (
+                <div key={step.title} className="timeline-step">
+                  <div className="step-badge">
+                    <step.icon />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">{step.title}</h3>
+                    <p className="text-sm text-slate-300">{step.description}</p>
+                    <span className="step-highlight text-slate-400 text-xs uppercase tracking-[0.3em]">{step.highlight}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* DESIGN SYSTEM */}
+          <section className="space-y-8">
+            <div className="section-heading">
+              <div>
+                <p className="section-tag">Design system</p>
+                <h2 className="section-title">Base visual do painel</h2>
+              </div>
+              <p className="section-description">
+                Tokens reutilizáveis garantem consistência entre dashboards, passaportes e fluxos de contratação.
               </p>
             </div>
-          </div>
+            <div className="token-grid">
+              {designTokensShowcase.map(group => (
+                <div key={group.title} className="token-card">
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">{group.title}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item, idx) => (
+                      <span key={idx} className="token-pill">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
-          {/* Access Buttons */}
-          <div className="mt-20 flex flex-wrap justify-center gap-6">
-            <Link href="/employer/dashboard">
-              <button className="btn-primary">
-                <FaBriefcase />
-                Acesso Empresas
-              </button>
-            </Link>
-            <Link href="/candidate/dashboard">
-              <button className="btn-primary">
-                <FaRocket />
-                Acesso Candidatos
-              </button>
-            </Link>
-            <Link href="/trainer/dashboard">
-              <button className="btn-primary">
-                <FaGraduationCap />
-                Acesso Formadores
-              </button>
-            </Link>
-          </div>
+          {/* CTA */}
+          <section>
+            <div className="cta-card">
+              <div>
+                <p className="section-tag">Pronto para o próximo capítulo?</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                  Ative sua central de missões e acompanhe o impacto em tempo real.
+                </h2>
+                <p className="text-slate-300 text-lg">
+                  Transforme currículos em narrativas, entrevistas em co-criação e relatórios em painéis vivos.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/ready-to-lauch">
+                  <button className="btn-primary text-lg">
+                    <FaRocket />
+                    Receber meu passaporte
+                  </button>
+                </Link>
+                <Link href="/stats">
+                  <button className="btn-secondary text-lg">
+                    <FaChartLine />
+                    Explorar impacto
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer 
-        className="py-12 px-6 text-center"
-        style={{ 
-          background: '#1E3A8A',
-          borderTop: '2px solid #C6A667'
-        }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-8 mb-6">
-            <Link href="/about" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
-              Sobre
-            </Link>
-            <Link href="/contact" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
-              Contato
-            </Link>
-            <Link href="/privacy" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
-              Privacidade
-            </Link>
-          </div>
-          <p style={{ color: '#D9D9D9', fontSize: '14px' }}>
-            © 2025 RocketSkills. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
+      </main>
     </div>
   );
 }
