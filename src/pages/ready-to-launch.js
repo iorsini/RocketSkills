@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaRocket, FaStar, FaCertificate, FaMedal, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaRocket, FaStar, FaCertificate, FaMedal, FaTwitter, FaTrophy, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 export default function ReadyToLaunch() {
   const [showConfetti, setShowConfetti] = useState(false);

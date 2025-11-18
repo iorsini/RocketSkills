@@ -159,7 +159,7 @@ export default function CandidateDashboard() {
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Missões alinhadas</p>
                   <h2 className="text-2xl font-bold">Oportunidades recomendadas</h2>
                 </div>
-                <Link href="/ready-to-lauch" className="section-link">
+                <Link href="/ready-to-launch" className="section-link">
                   ver todas
                 </Link>
               </div>
