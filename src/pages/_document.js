@@ -4,8 +4,8 @@ export default function Document() {
   return (
     <Html lang="pt-BR">
       <Head>
-        <meta name="description" content="RocketSkills - Plataforma de matchmaking inteligente" />
-        <link rel="icon" href="/rocket-icon.png" />
+        <meta name="description" content="PathPort - passaportes de competências e jornadas internacionais de carreira" />
+        <link rel="icon" href="/pathport-icon.svg" />
       </Head>
       <body className="antialiased">
         <Main />

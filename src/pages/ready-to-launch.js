@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaRocket, FaStar, FaCertificate, FaMedal, FaTwitter, FaTrophy, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import { FaPlaneDeparture, FaStamp, FaWhatsapp, FaLinkedin, FaEnvelopeOpenText } from 'react-icons/fa';
 
-export default function ReadyToLaunch() {
+export default function ReadyToTravel() {
   const [showConfetti, setShowConfetti] = useState(false);
-  const confettiIcons = [FaStar, FaRocket, FaTrophy, FaMedal, FaCertificate];
+  const confettiIcons = [FaPlaneDeparture, FaStamp];
 
   useEffect(() => {
     setShowConfetti(true);
@@ -15,11 +15,11 @@ export default function ReadyToLaunch() {
   const stats = {
     skillsMastered: 12,
     learningHours: 156,
-    jobMatch: 97
+    jobMatch: 97,
   };
 
   return (
-    <div className="space-bg min-h-screen relative overflow-hidden">
+    <div className="journey-bg min-h-screen relative overflow-hidden">
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-10">
           {[...Array(30)].map((_, i) => {
@@ -33,8 +33,8 @@ export default function ReadyToLaunch() {
                   top: '-10px',
                   animation: `fall ${2 + Math.random() * 3}s linear infinite`,
                   animationDelay: `${Math.random()}s`,
-                  color: '#5c8dff',
-                  opacity: 0.7
+                  color: '#E09F3E',
+                  opacity: 0.7,
                 }}
               >
                 <Icon />
@@ -52,51 +52,48 @@ export default function ReadyToLaunch() {
         }
       `}</style>
 
-      <main className="app-shell">
-        <div className="stellar-container space-y-8 relative z-20">
-          <div className="card-rocket text-center space-y-4">
-            <p className="section-tag">Parabéns, astronauta</p>
-            <h1 className="text-4xl md:text-5xl font-extrabold">Você está pronto para decolar</h1>
-            <p className="text-slate-300">Missões concluídas e passaporte validado pela RocketSkills Space Agency.</p>
+      <main className="pathport-shell">
+        <div className="terminal-container space-y-8 relative z-20">
+          <div className="pathport-card text-center space-y-4">
+            <p className="tag-chip">Parabéns, viajante</p>
+            <h1 className="text-4xl md:text-5xl">Seu passaporte PathPort está validado</h1>
+            <p className="text-[var(--pathport-slate)]">Carimbos revisados e vistos emitidos. Agora é só seguir para o portão indicado.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/stats">
-                <button className="btn-primary">
-                  <FaRocket /> Ver impacto
+                <button className="boarding-button">
+                  <FaPlaneDeparture /> Ver impacto
                 </button>
               </Link>
               <Link href="/">
-                <button className="btn-secondary">
-                  Compartilhar missão
-                </button>
+                <button className="outline-button">Voltar à central</button>
               </Link>
             </div>
           </div>
 
-          <div className="card-rocket grid gap-6 lg:grid-cols-2">
+          <div className="pathport-card grid gap-6 lg:grid-cols-2">
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold">Selo Ready to Launch</h2>
-              <p className="text-slate-300">Compartilhe o selo nas redes e desbloqueie convites prioritários.</p>
+              <h2 className="text-2xl">Selo PathPort Approved</h2>
+              <p className="text-[var(--pathport-slate)]">Compartilhe nas redes e convide a sua tripulação.</p>
               <div className="flex flex-wrap gap-2">
-                {[FaTwitter, FaLinkedin, FaWhatsapp].map((Icon, idx) => (
-                  <button key={idx} className="btn-secondary">
-                    <Icon />
-                    Compartilhar
+                {[FaLinkedin, FaWhatsapp, FaEnvelopeOpenText].map((Icon, idx) => (
+                  <button key={idx} className="outline-button">
+                    <Icon /> Compartilhar
                   </button>
                 ))}
               </div>
             </div>
-            <div className="stamp approved text-center">
-              <FaRocket className="text-4xl mb-2" />
-              READY TO LAUNCH
-              <p className="text-xs tracking-[0.3em] mt-2">ROCKETSKILLS CERTIFIED</p>
+            <div className="stamp text-center" style={{ borderColor: '#9E2A2B', color: '#9E2A2B' }}>
+              <FaStamp className="text-4xl mb-2" />
+              PATHPORT APPROVED
+              <p className="text-xs tracking-[0.3em] mt-2">Todos os carimbos revisados</p>
             </div>
           </div>
 
-          <div className="card-rocket grid gap-4 md:grid-cols-3">
-            {[{ label: 'Skills', value: stats.skillsMastered }, { label: 'Horas', value: stats.learningHours }, { label: 'Job match', value: `${stats.jobMatch}%` }].map(stat => (
-              <div key={stat.label} className="glass-tile text-center">
+          <div className="journey-grid">
+            {[{ label: 'Skills homologadas', value: stats.skillsMastered }, { label: 'Horas registradas', value: stats.learningHours }, { label: 'Chance de embarque', value: `${stats.jobMatch}%` }].map((stat) => (
+              <div key={stat.label} className="ticket-card text-center">
                 <p className="text-3xl font-bold">{stat.value}</p>
-                <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{stat.label}</p>
+                <p className="text-xs uppercase tracking-[0.3em] text-[var(--pathport-muted)]">{stat.label}</p>
               </div>
             ))}
           </div>
