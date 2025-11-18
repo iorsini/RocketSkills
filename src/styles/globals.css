@@ -131,6 +131,8 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary {
   background: var(--gradient-primary);
   color: white;
+  margin-top: 0.875rem;
+  margin-bottom: 0.875rem;
   padding: 0.875rem 1.75rem;
   border-radius: var(--radius-md);
   border: none;
@@ -154,6 +156,8 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   color: var(--text-primary);
   padding: 0.875rem 1.75rem;
+  margin-top: 0.875rem;
+  margin-bottom: 0.875rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-medium);
   font-weight: 600;

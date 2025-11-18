@@ -146,17 +146,13 @@ export default function Landing() {
           {/* HERO */}
           <section className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <div className="space-y-8">
-              <div className="badge-chip">
-                Temporada Orbital 02 • UI/UX Futurista
-              </div>
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
                 Painel intergaláctico para acelerar talentos, empresas e
                 mentores.
               </h1>
               <p className="text-lg text-slate-300 max-w-2xl">
-                RocketSkills conecta empregadores, candidatos e formadores em um
-                fluxo espacial. Cada competência vira um carimbo no passaporte
-                intergaláctico com energia, constelações e telemetria viva.
+                Conectamos empregadores, candidatos e formadores em um
+                fluxo espacial.
               </p>
 
               <div className="flex flex-wrap gap-4 my-8">
@@ -173,33 +169,6 @@ export default function Landing() {
                   </button>
                 </Link>
               </div>
-
-              <div className="grid sm:grid-cols-3 gap-6 pt-4">
-                {missionStats.map((card) => (
-                  <div key={card.title} className="stat-card">
-                    <div className="flex items-center justify-between mb-4">
-                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
-                        {card.title}
-                      </p>
-                      <div
-                        className="glow-ring"
-                        style={{ borderColor: card.accent, color: card.accent }}
-                      >
-                        <card.icon />
-                      </div>
-                    </div>
-                    <div
-                      className="text-3xl font-extrabold"
-                      style={{ color: card.accent }}
-                    >
-                      {card.value}
-                    </div>
-                    <span className="text-xs text-slate-400">
-                      {card.detail}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* MISSION PANEL */}
@@ -212,9 +181,6 @@ export default function Landing() {
                   <h2 className="text-2xl font-bold mt-1">
                     Pronto para a decolagem
                   </h2>
-                </div>
-                <div className="glow-ring">
-                  <FaSatellite />
                 </div>
               </div>
 
@@ -274,12 +240,6 @@ export default function Landing() {
 
           {/* PERSONAS */}
           <section className="space-y-10">
-            <div className="section-heading">
-              <div>
-                <h2 className="section-title">Escolha sua missão</h2>
-              </div>
-            </div>
-
             <div className="grid md:grid-cols-3 gap-8">
               {personaTracks.map((track) => (
                 <div
